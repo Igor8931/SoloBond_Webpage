@@ -18,6 +18,7 @@ const steps = [
     num: '01',
     imgSrc: '/images/screenshot-checkin.png',
     videoSrc: '/videos/checkin-flow.mp4',
+    posterSrc: '/videos/checkin-flow-poster.jpg',
     alt: 'Check-in screen',
     rotation: 'left' as const,
     hasVideo: true,
@@ -27,6 +28,7 @@ const steps = [
     num: '02',
     imgSrc: '/images/screenshot-done.png',
     videoSrc: '/videos/app-demo.mp4',
+    posterSrc: '/videos/app-demo-poster.jpg',
     alt: 'Done screen with day colors',
     rotation: 'right' as const,
     hasVideo: true,
@@ -36,6 +38,7 @@ const steps = [
     num: '03',
     imgSrc: '/images/screenshot_checkin_black.PNG',
     videoSrc: '',
+    posterSrc: '',
     alt: 'Check-in screen dark mode',
     rotation: 'left' as const,
     hasVideo: false,
@@ -59,6 +62,7 @@ const steps = [
                     src={step.videoSrc}
                     alt={step.alt}
                     type="video"
+                    poster={step.posterSrc}
                     rotation={step.rotation}
                     size="medium"
                   />

@@ -3,6 +3,7 @@ interface Props {
   src: string;
   alt: string;
   type?: 'image' | 'video';
+  poster?: string;
   rotation?: 'left' | 'right' | 'straight';
   size?: 'small' | 'medium' | 'large';
   floating?: boolean;
@@ -14,6 +15,7 @@ const {
   src,
   alt,
   type = 'image',
+  poster,
   rotation = 'left',
   size = 'medium',
   floating = false,
@@ -40,6 +42,7 @@ const frameClasses = [
         loop
         playsinline
         preload="metadata"
+        poster={poster}
         aria-label={alt}
         role="presentation"
       >
