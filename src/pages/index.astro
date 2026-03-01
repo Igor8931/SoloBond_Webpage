@@ -1,0 +1,23 @@
+---
+import content from '../content/en.json';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import ProblemSection from '../components/ProblemSection.astro';
+import HowItWorksSection from '../components/HowItWorksSection.astro';
+import TrustedContactSection from '../components/TrustedContactSection.astro';
+import PricingSection from '../components/PricingSection.astro';
+import PrivacySection from '../components/PrivacySection.astro';
+import FaqSection from '../components/FaqSection.astro';
+import CtaSection from '../components/CtaSection.astro';
+---
+
+<BaseLayout content={content}>
+  <HeroSection content={content.hero} lang={content.lang} />
+  <ProblemSection content={content.problem} lang={content.lang} />
+  <HowItWorksSection content={content.howItWorks} />
+  <TrustedContactSection content={content.trustedContact} />
+  <PricingSection content={content.pricing} />
+  <PrivacySection content={content.privacy} />
+  <FaqSection content={content.faq} />
+  <CtaSection content={content.cta} lang={content.lang} />
+</BaseLayout>

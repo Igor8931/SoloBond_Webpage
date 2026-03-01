@@ -1,0 +1,94 @@
+{
+  "lang": "en",
+  "meta": {
+    "title": "SoloBond — A quiet connection for solo living",
+    "description": "Live alone or travel solo? One tap each morning — your trusted contact knows you're okay. No calls, no chats. Just a quiet signal between you."
+  },
+  "nav": {
+    "howItWorks": "How it works",
+    "getTheApp": "Get the App",
+    "faq": "FAQ",
+    "languageSwitch": "Deutsch"
+  },
+  "hero": {
+    "headline": "A quiet connection for solo living.",
+    "subline": "Live alone or travel solo? One tap each morning — your trusted contact knows you're okay. No calls, no chats. Just a quiet signal between you.",
+    "comingSoon": "Coming Spring 2026"
+  },
+  "problem": {
+    "headline": "You love your independence.",
+    "body": "You chose this life — the solo apartment, the spontaneous trips, the freedom. But sometimes, late at night or on a quiet morning, a thought crosses your mind: Would anyone notice if something happened? SoloBond replaces the daily 'Are you okay?' texts with something simpler. One tap. Three seconds. Done."
+  },
+  "howItWorks": {
+    "headline": "Three seconds. Every morning.",
+    "step1": {
+      "title": "Check in",
+      "description": "One tap. Three seconds. That's it."
+    },
+    "step2": {
+      "title": "Choose a color",
+      "description": "How's your day? Pick a color. No words needed."
+    },
+    "step3": {
+      "title": "They know you're okay",
+      "description": "Your trusted contact sees your signal. A quiet 'I'm here.'"
+    }
+  },
+  "trustedContact": {
+    "headline": "For your trusted contact",
+    "body": "Your mom, your sibling, your best friend — they don't even need the app. If you miss a check-in, they get a gentle email. If they install SoloBond, they see your daily status and can send a heart back. A quiet 'I see you.'",
+    "noAppRequired": "No app required for your contact."
+  },
+  "pricing": {
+    "headline": "Free to use. Built to last.",
+    "body": "SoloBond is free — and always will be for the core experience. Daily check-ins, one trusted contact, Day Colors, and streaks are yours at no cost.",
+    "premiumHint": "Premium features like SMS alerts, custom check-in times, and multiple trusted contacts are coming soon."
+  },
+  "privacy": {
+    "headline": "Privacy-first. Always.",
+    "body": "No GPS. No location tracking. No ads. No data selling. Your daily ritual stays between you and your trusted contact."
+  },
+  "faq": {
+    "headline": "Questions & Answers",
+    "items": [
+      {
+        "question": "What is SoloBond?",
+        "answer": "SoloBond is a daily check-in app for people who live alone or travel solo. One tap each morning lets your trusted contact know you're okay — no calls, no chats, no explaining."
+      },
+      {
+        "question": "How does it work?",
+        "answer": "Check in once a day (it takes 3 seconds). Your trusted contact sees your status in the app or gets an email if you miss a check-in. That's it — simple by design."
+      },
+      {
+        "question": "Does my trusted contact need to install the app?",
+        "answer": "No. They can simply receive email alerts if you ever miss a check-in. But if they install the app, they get a dashboard with your daily status and can send a heart back as a quiet 'I see you.'"
+      },
+      {
+        "question": "What happens if I miss a check-in?",
+        "answer": "First, you'll get a gentle reminder. If you still don't check in, your trusted contact receives a heads-up after 24 hours — giving you plenty of time without false alarms."
+      },
+      {
+        "question": "Is my data private?",
+        "answer": "Yes. No GPS, no location tracking, no ads, no data selling. Your check-in stays between you and your trusted contact. You can delete your data anytime in Settings."
+      },
+      {
+        "question": "Does my trusted contact have to agree?",
+        "answer": "Yes. Your trusted contact must accept your invitation before the connection is active. They can unsubscribe anytime — when they do, all their data is deleted immediately."
+      },
+      {
+        "question": "Is SoloBond an emergency service?",
+        "answer": "No. SoloBond is a daily routine with a safety net — not a replacement for emergency services. If you're in immediate danger, call your local emergency number."
+      }
+    ]
+  },
+  "cta": {
+    "headline": "Ready for your quiet ritual?",
+    "comingSoon": "Coming Spring 2026"
+  },
+  "footer": {
+    "tagline": "A quiet connection for solo living.",
+    "privacyPolicy": "Privacy Policy",
+    "legalTerms": "Legal Terms",
+    "copyright": "© 2026 SoloBond. All rights reserved."
+  }
+}

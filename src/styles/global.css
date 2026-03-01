@@ -1,0 +1,175 @@
+/* ============================================
+   SoloBond — Global Styles & Design Tokens
+   "Golden Hour Editorial" Design System
+   ============================================ */
+
+/* --- Custom Properties (Design Tokens) --- */
+:root {
+  /* Colors — VERBINDLICH */
+  --color-primary: #F0E6D8;
+  --color-accent: #E8785C;
+  --color-accent-hover: #D4654A;
+  --color-text-dark: #2A2A2A;
+  --color-text-muted: #6B6B6B;
+  --color-bg-white: #FEFCF9;
+  --color-bg-dark: #1E1E1E;
+  --color-success: #7CB97A;
+  --color-sage: #9BAF8E;
+
+  /* Derived Colors */
+  --color-primary-darker: #E6D9C8;
+  --color-bg-dark-text: #F5F0EB;
+  --color-bg-dark-muted: #A0A0A0;
+  --color-border-light: rgba(42, 42, 42, 0.08);
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 8rem;
+
+  /* Section Padding */
+  --section-padding-y: clamp(4rem, 8vw, 7rem);
+  --section-padding-x: clamp(1.25rem, 5vw, 3rem);
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-soft: 0 4px 24px rgba(42, 42, 42, 0.06);
+  --shadow-medium: 0 8px 40px rgba(42, 42, 42, 0.1);
+  --shadow-elevated: 0 16px 64px rgba(42, 42, 42, 0.12);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Layout */
+  --max-width: 1200px;
+  --max-width-narrow: 720px;
+  --header-height: 72px;
+}
+
+/* --- CSS Reset --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text-dark);
+  background-color: var(--color-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* --- Utility Classes --- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--section-padding-x);
+}
+
+.container--narrow {
+  max-width: var(--max-width-narrow);
+}
+
+.section {
+  padding-block: var(--section-padding-y);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Selection Color --- */
+::selection {
+  background-color: rgba(232, 120, 92, 0.2);
+  color: var(--color-text-dark);
+}
+
+/* --- Focus Styles --- */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,82 @@
+---
+interface Props {
+  comingSoon?: string;
+  class?: string;
+  lang?: string;
+}
+
+const { comingSoon, class: className = '', lang = 'en' } = Astro.props;
+const ariaLabel = lang === 'de' ? 'Im App Store laden' : 'Download on the App Store';
+---
+
+<div class:list={['app-store-wrapper', className]}>
+  <a href="#" class="app-store-link" aria-label={ariaLabel}>
+    <img
+      src="/badges/app-store-badge-black.png"
+      alt={ariaLabel}
+      width="150"
+      height="50"
+      class="app-store-badge"
+      loading="lazy"
+    />
+  </a>
+  {comingSoon && (
+    <p class="coming-soon">{comingSoon}</p>
+  )}
+</div>
+
+<style>
+  .app-store-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .app-store-link {
+    display: inline-block;
+    transition: transform var(--transition-fast), opacity var(--transition-fast), box-shadow var(--transition-fast);
+    border-radius: var(--radius-md);
+  }
+
+  .app-store-link:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+
+  /* Glow-pulse when wrapper has animate-glow-wrap class */
+  :global(.animate-glow-wrap) .app-store-link {
+    animation: app-store-glow 3s ease-in-out infinite;
+  }
+
+  @keyframes app-store-glow {
+    0%, 100% {
+      box-shadow: 0 0 15px rgba(232, 120, 92, 0.2), 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(232, 120, 92, 0.45), 0 4px 24px rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  .app-store-badge {
+    width: 150px;
+    height: auto;
+  }
+
+  .coming-soon {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(.animate-glow-wrap) .app-store-link {
+      animation: none;
+    }
+
+    .app-store-link:hover {
+      transform: none;
+    }
+  }
+</style>

@@ -1,0 +1,123 @@
+---
+interface Props {
+  content: {
+    headline: string;
+    body: string;
+  };
+  lang?: string;
+}
+
+const { content, lang = 'en' } = Astro.props;
+const altText = lang === 'de'
+  ? 'Frau allein auf einem Dach bei Sonnenuntergang, schaut auf ihr Handy'
+  : 'Woman alone on a rooftop at sunset, looking at her phone';
+---
+
+<section class="problem section" id="problem">
+  <div class="problem__inner container">
+    <div class="problem__layout">
+      <!-- Photo: Woman alone on rooftop, looking at phone -->
+      <div class="problem__photo reveal-left">
+        <img
+          src="/images/hero-woman-rooftop_2.png"
+          alt={altText}
+          class="problem__photo-img"
+          width="400"
+          height="560"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Text -->
+      <div class="problem__text">
+        <h2 class="problem__headline reveal">{content.headline}</h2>
+        <p class="problem__body reveal reveal-delay-1">{content.body}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .problem {
+    background-color: var(--color-primary);
+    padding-block: var(--space-3xl);
+  }
+
+  .problem__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+
+  .problem__photo {
+    display: flex;
+    justify-content: center;
+  }
+
+  .problem__photo-img {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: center 20%;
+    border-radius: var(--radius-xl);
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.1),
+      0 8px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .problem__text {
+    text-align: center;
+  }
+
+  .problem__headline {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: var(--space-lg);
+    color: var(--color-text-dark);
+  }
+
+  .problem__body {
+    font-size: clamp(1.0625rem, 2vw, 1.1875rem);
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    max-width: 520px;
+    margin-inline: auto;
+  }
+
+  /* Desktop: Photo left, text right */
+  @media (min-width: 768px) {
+    .problem__layout {
+      grid-template-columns: 5fr 7fr;
+      gap: var(--space-2xl);
+    }
+
+    .problem__text {
+      text-align: left;
+    }
+
+    .problem__body {
+      margin-inline: 0;
+    }
+
+    .problem__photo-img {
+      max-width: 360px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .problem__photo-img {
+      max-width: 380px;
+    }
+  }
+
+  /* Mobile: Photo smaller, centered above text */
+  @media (max-width: 767px) {
+    .problem__photo-img {
+      max-width: 260px;
+    }
+  }
+</style>

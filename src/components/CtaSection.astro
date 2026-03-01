@@ -1,0 +1,53 @@
+---
+import AppStoreButton from './AppStoreButton.astro';
+
+interface Props {
+  content: {
+    headline: string;
+    comingSoon: string;
+  };
+  lang?: string;
+}
+
+const { content, lang = 'en' } = Astro.props;
+---
+
+<section class="cta section" id="cta">
+  <div class="cta__inner container container--narrow">
+    <h2 class="cta__headline reveal">{content.headline}</h2>
+    <div class="cta__button reveal reveal-delay-1">
+      <AppStoreButton class="animate-glow-wrap" lang={lang} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta {
+    background: linear-gradient(
+      180deg,
+      var(--color-primary) 0%,
+      var(--color-primary-darker) 100%
+    );
+    padding-block: var(--space-3xl);
+    text-align: center;
+  }
+
+  .cta__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta__headline {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 800;
+    color: var(--color-text-dark);
+    margin-bottom: var(--space-xl);
+    line-height: 1.15;
+  }
+
+  .cta__button {
+    display: flex;
+    justify-content: center;
+  }
+</style>

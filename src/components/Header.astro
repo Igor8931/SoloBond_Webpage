@@ -1,0 +1,142 @@
+---
+import LanguageSwitch from './LanguageSwitch.astro';
+
+interface Props {
+  content: {
+    lang: string;
+    nav: {
+      howItWorks: string;
+      getTheApp: string;
+      faq: string;
+      languageSwitch: string;
+    };
+  };
+}
+
+const { content } = Astro.props;
+const lang = content.lang;
+const isDE = lang === 'de';
+const basePath = isDE ? '/de' : '';
+---
+
+<header class="header">
+  <div class="header__inner container">
+    <!-- Logo -->
+    <a href={isDE ? '/de/' : '/'} class="header__logo" aria-label="SoloBond Home">
+      <img
+        src="/images/logo-full-transp.png"
+        alt="SoloBond"
+        width="140"
+        height="40"
+        class="header__logo-img"
+      />
+    </a>
+
+    <!-- Navigation -->
+    <nav class="header__nav" aria-label="Main navigation">
+      <a href={`${basePath}/#how-it-works`} class="header__nav-link">
+        {content.nav.howItWorks}
+      </a>
+      <a href={`${basePath}/#cta`} class="header__nav-link">
+        {content.nav.getTheApp}
+      </a>
+      <a href={`${basePath}/#faq`} class="header__nav-link">
+        {content.nav.faq}
+      </a>
+      <LanguageSwitch lang={lang} />
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: var(--header-height);
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+  }
+
+  /* Scrolled state — Glass Effect */
+  .header:global(.header--scrolled) {
+    background-color: rgba(240, 230, 216, 0.8);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    box-shadow: 0 1px 0 rgba(42, 42, 42, 0.06), 0 4px 20px rgba(42, 42, 42, 0.04);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .header__logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .header__logo-img {
+    width: 234px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .header__nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .header__nav-link {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-text-dark);
+    text-decoration: none;
+    padding: 0.375rem 0;
+    position: relative;
+    transition: color var(--transition-fast);
+  }
+
+  .header__nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    background-color: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform var(--transition-base);
+  }
+
+  .header__nav-link:hover {
+    color: var(--color-accent);
+  }
+
+  .header__nav-link:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .header__nav {
+      gap: var(--space-sm);
+    }
+
+    .header__nav-link {
+      font-size: 0.8125rem;
+    }
+
+    .header__logo-img {
+      width: 182px;
+    }
+  }
+</style>

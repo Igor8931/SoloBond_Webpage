@@ -1,0 +1,143 @@
+---
+import IPhoneMockup from './IPhoneMockup.astro';
+import AppStoreButton from './AppStoreButton.astro';
+
+interface Props {
+  content: {
+    headline: string;
+    subline: string;
+    comingSoon: string;
+  };
+  lang?: string;
+}
+
+const { content, lang = 'en' } = Astro.props;
+---
+
+<section class="hero" id="hero">
+  <div class="hero__inner container">
+    <!-- Content: Text + Mockup -->
+    <div class="hero__content">
+      <div class="hero__text">
+        <h1 class="hero__headline">{content.headline}</h1>
+        <p class="hero__subline">{content.subline}</p>
+        <div class="hero__cta">
+          <AppStoreButton class="animate-glow-wrap" lang={lang} />
+        </div>
+      </div>
+
+      <div class="hero__mockup">
+        <IPhoneMockup
+          src="/images/screenshot-checkin.png"
+          alt="SoloBond Check-in Screen"
+          rotation="straight"
+          size="large"
+          floating={true}
+          eager={true}
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    background-color: var(--color-primary);
+    padding-top: calc(var(--header-height) + 2rem);
+    padding-bottom: var(--space-2xl);
+    overflow: hidden;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .hero__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+
+  .hero__text {
+    max-width: 520px;
+  }
+
+  .hero__headline {
+    font-size: clamp(2.5rem, 6vw, 3.75rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--color-text-dark);
+    margin-bottom: var(--space-md);
+  }
+
+  .hero__subline {
+    font-size: clamp(1.0625rem, 2vw, 1.25rem);
+    line-height: 1.65;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-xl);
+    max-width: 460px;
+  }
+
+  .hero__cta {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .hero__mockup {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* --- Desktop: Two columns --- */
+  @media (min-width: 900px) {
+    .hero {
+      padding-top: calc(var(--header-height) + 3rem);
+      padding-bottom: var(--space-3xl);
+    }
+
+    .hero__content {
+      grid-template-columns: 1.1fr 1fr;
+      gap: var(--space-2xl);
+    }
+
+    .hero__mockup {
+      justify-content: center;
+    }
+  }
+
+  /* --- Tablet & Mobile --- */
+  @media (max-width: 899px) {
+    .hero {
+      min-height: auto;
+      padding-bottom: var(--space-xl);
+    }
+
+    .hero__text {
+      text-align: center;
+      margin-inline: auto;
+    }
+
+    .hero__subline {
+      margin-inline: auto;
+    }
+
+    .hero__cta {
+      justify-content: center;
+    }
+  }
+
+  /* Very small mobile */
+  @media (max-width: 400px) {
+    .hero__mockup :global(.iphone-frame) {
+      width: 260px;
+    }
+  }
+</style>

@@ -1,0 +1,156 @@
+---
+interface Props {
+  content: {
+    lang: string;
+    footer: {
+      tagline: string;
+      privacyPolicy: string;
+      legalTerms: string;
+      copyright: string;
+    };
+  };
+}
+
+const { content } = Astro.props;
+const lang = content.lang;
+const isDE = lang === 'de';
+const basePath = isDE ? '/de' : '';
+---
+
+<footer class="footer">
+  <div class="footer__inner container">
+    <!-- Logo & Tagline -->
+    <div class="footer__brand">
+      <a href={isDE ? '/de/' : '/'} class="footer__logo" aria-label="SoloBond Home">
+        <img
+          src="/images/logo-icon.png"
+          alt="SoloBond"
+          width="40"
+          height="40"
+          class="footer__logo-img"
+          loading="lazy"
+        />
+      </a>
+      <p class="footer__tagline">{content.footer.tagline}</p>
+    </div>
+
+    <!-- Divider -->
+    <div class="footer__divider"></div>
+
+    <!-- Bottom Row -->
+    <div class="footer__bottom">
+      <p class="footer__copyright">{content.footer.copyright}</p>
+      <nav class="footer__links" aria-label="Footer navigation">
+        <a href={`${basePath}/privacy`} class="footer__link">{content.footer.privacyPolicy}</a>
+        <a href={`${basePath}/legal`} class="footer__link">{content.footer.legalTerms}</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-bg-dark);
+    padding-block: var(--space-xl) var(--space-lg);
+  }
+
+  .footer__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .footer__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .footer__logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .footer__logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    mix-blend-mode: screen;
+  }
+
+  .footer__tagline {
+    font-size: 0.9375rem;
+    color: var(--color-bg-dark-muted);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .footer__divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.15),
+      transparent
+    );
+  }
+
+  .footer__bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    width: 100%;
+  }
+
+  .footer__copyright {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  .footer__links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .footer__link {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.25s ease;
+    position: relative;
+  }
+
+  .footer__link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .footer__link:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .footer__link:hover::after {
+    transform: scaleX(1);
+  }
+
+  @media (min-width: 640px) {
+    .footer__bottom {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+</style>

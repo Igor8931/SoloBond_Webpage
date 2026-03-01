@@ -1,0 +1,78 @@
+---
+interface Props {
+  content: {
+    headline: string;
+    body: string;
+    premiumHint: string;
+  };
+}
+
+const { content } = Astro.props;
+---
+
+<section class="pricing section" id="pricing">
+  <div class="pricing__inner container container--narrow">
+    <div class="pricing__card reveal">
+      <h2 class="pricing__headline">{content.headline}</h2>
+      <p class="pricing__body">{content.body}</p>
+      <div class="pricing__divider"></div>
+      <p class="pricing__premium">{content.premiumHint}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing {
+    background-color: var(--color-bg-white);
+    padding-block: var(--space-3xl);
+  }
+
+  .pricing__inner {
+    display: flex;
+    justify-content: center;
+  }
+
+  .pricing__card {
+    text-align: center;
+    max-width: 560px;
+    padding: var(--space-xl) var(--space-lg);
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--color-border-light);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+  }
+
+  .pricing__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
+  }
+
+  .pricing__headline {
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    font-weight: 800;
+    color: var(--color-text-dark);
+    margin-bottom: var(--space-md);
+  }
+
+  .pricing__body {
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    line-height: 1.7;
+    color: var(--color-text-muted);
+  }
+
+  .pricing__divider {
+    width: 40px;
+    height: 2px;
+    background: var(--color-accent);
+    margin: var(--space-lg) auto;
+    border-radius: 1px;
+  }
+
+  .pricing__premium {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+</style>

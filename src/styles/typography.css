@@ -1,0 +1,98 @@
+/* ============================================
+   SoloBond — Typography
+   Plus Jakarta Sans (Headlines) + DM Sans (Body)
+   ============================================ */
+
+/* --- Headings --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-text-dark);
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+}
+
+h4 {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+/* --- Body Text --- */
+p {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.7;
+  color: var(--color-text-dark);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-large {
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  line-height: 1.6;
+}
+
+.text-small {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* --- Links --- */
+a:not([class]) {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+}
+
+a:not([class]):hover {
+  color: var(--color-accent-hover);
+}
+
+/* --- Section Headlines --- */
+.section-headline {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.section-subline {
+  text-align: center;
+  max-width: 600px;
+  margin-inline: auto;
+  color: var(--color-text-muted);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+}
+
+/* --- Dark Background Text --- */
+.dark-bg h1,
+.dark-bg h2,
+.dark-bg h3,
+.dark-bg h4 {
+  color: var(--color-bg-dark-text);
+}
+
+.dark-bg p {
+  color: var(--color-bg-dark-muted);
+}
+
+.dark-bg .text-muted {
+  color: var(--color-bg-dark-muted);
+}

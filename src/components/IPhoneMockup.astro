@@ -1,0 +1,57 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  type?: 'image' | 'video';
+  rotation?: 'left' | 'right' | 'straight';
+  size?: 'small' | 'medium' | 'large';
+  floating?: boolean;
+  eager?: boolean;
+  class?: string;
+}
+
+const {
+  src,
+  alt,
+  type = 'image',
+  rotation = 'left',
+  size = 'medium',
+  floating = false,
+  eager = false,
+  class: className = '',
+} = Astro.props;
+
+const frameClasses = [
+  'iphone-frame',
+  `iphone-frame--${rotation}`,
+  `iphone-frame--${size}`,
+  floating ? 'iphone-frame--floating' : '',
+  className,
+].filter(Boolean).join(' ');
+---
+
+<div class="mockup-container">
+  <div class={frameClasses}>
+    {type === 'video' ? (
+      <video
+        class="iphone-screen iphone-screen--video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        aria-label={alt}
+        role="presentation"
+      >
+        <source src={src} type="video/mp4" />
+      </video>
+    ) : (
+      <img
+        class="iphone-screen"
+        src={src}
+        alt={alt}
+        loading={eager ? 'eager' : 'lazy'}
+      />
+    )}
+  </div>
+</div>

@@ -1,0 +1,94 @@
+{
+  "lang": "de",
+  "meta": {
+    "title": "SoloBond — Eine stille Verbindung für dein Solo-Leben",
+    "description": "Du lebst allein oder reist solo? Ein Tap am Morgen — deine Vertrauensperson weiß, dass es dir gut geht. Keine Anrufe, kein Chat. Nur ein stilles Signal zwischen euch."
+  },
+  "nav": {
+    "howItWorks": "So funktioniert's",
+    "getTheApp": "App laden",
+    "faq": "FAQ",
+    "languageSwitch": "English"
+  },
+  "hero": {
+    "headline": "Eine stille Verbindung für dein Solo-Leben.",
+    "subline": "Du lebst allein oder reist solo? Ein Tap am Morgen — deine Vertrauensperson weiß, dass es dir gut geht. Keine Anrufe, kein Chat. Nur ein stilles Signal zwischen euch.",
+    "comingSoon": "Bald verfügbar — Frühjahr 2026"
+  },
+  "problem": {
+    "headline": "Du liebst deine Unabhängigkeit.",
+    "body": "Du hast dieses Leben gewählt — die eigene Wohnung, spontane Reisen, die Freiheit. Aber manchmal, spät abends oder an einem stillen Morgen, kommt dieser Gedanke: Würde es jemand merken, wenn etwas passiert? SoloBond ersetzt die tägliche 'Alles okay?'-SMS durch etwas Einfacheres. Ein Tap. Drei Sekunden. Fertig."
+  },
+  "howItWorks": {
+    "headline": "Drei Sekunden. Jeden Morgen.",
+    "step1": {
+      "title": "Einchecken",
+      "description": "Ein Tap. Drei Sekunden. Das war's."
+    },
+    "step2": {
+      "title": "Farbe wählen",
+      "description": "Wie ist dein Tag? Wähle eine Farbe. Keine Worte nötig."
+    },
+    "step3": {
+      "title": "Alles okay",
+      "description": "Deine Vertrauensperson sieht dein Signal. Ein stilles 'Ich bin da.'"
+    }
+  },
+  "trustedContact": {
+    "headline": "Für deine Vertrauensperson",
+    "body": "Deine Mama, dein Bruder, deine beste Freundin — sie brauchen nicht mal die App. Wenn du ein Check-in verpasst, bekommen sie eine freundliche E-Mail. Wer SoloBond installiert, sieht deinen Tagesstatus und kann ein Herz zurückschicken. Ein stilles 'Ich sehe dich.'",
+    "noAppRequired": "Kein App-Download nötig für deine Vertrauensperson."
+  },
+  "pricing": {
+    "headline": "Kostenlos. Und bleibt es auch.",
+    "body": "SoloBond ist kostenlos — und das Kern-Erlebnis bleibt es auch. Tägliche Check-ins, eine Vertrauensperson, Day Colors und Streaks kosten dich nichts.",
+    "premiumHint": "Premium-Features wie SMS-Benachrichtigungen, individuelle Check-in-Zeiten und mehrere Vertrauenspersonen kommen bald."
+  },
+  "privacy": {
+    "headline": "Datenschutz zuerst. Immer.",
+    "body": "Kein GPS. Kein Standort-Tracking. Keine Werbung. Kein Datenverkauf. Dein tägliches Ritual bleibt zwischen dir und deiner Vertrauensperson."
+  },
+  "faq": {
+    "headline": "Fragen & Antworten",
+    "items": [
+      {
+        "question": "Was ist SoloBond?",
+        "answer": "SoloBond ist eine tägliche Check-in-App für Menschen, die allein leben oder solo reisen. Ein Tap am Morgen lässt deine Vertrauensperson wissen, dass es dir gut geht — keine Anrufe, kein Chat, kein Erklären."
+      },
+      {
+        "question": "Wie funktioniert es?",
+        "answer": "Checke einmal am Tag ein (dauert 3 Sekunden). Deine Vertrauensperson sieht deinen Status in der App oder bekommt eine E-Mail, wenn du ein Check-in verpasst. Das war's — einfach by Design."
+      },
+      {
+        "question": "Muss meine Vertrauensperson die App installieren?",
+        "answer": "Nein. Sie kann einfach E-Mail-Benachrichtigungen erhalten, falls du mal ein Check-in verpasst. Wenn sie die App installiert, bekommt sie ein Dashboard mit deinem Tagesstatus und kann ein Herz zurückschicken — ein stilles 'Ich sehe dich.'"
+      },
+      {
+        "question": "Was passiert, wenn ich ein Check-in verpasse?",
+        "answer": "Zuerst bekommst du eine freundliche Erinnerung. Wenn du dich dann immer noch nicht eincheckst, erhält deine Vertrauensperson nach 24 Stunden einen Hinweis — genug Zeit, ohne falschen Alarm."
+      },
+      {
+        "question": "Sind meine Daten privat?",
+        "answer": "Ja. Kein GPS, kein Standort-Tracking, keine Werbung, kein Datenverkauf. Dein Check-in bleibt zwischen dir und deiner Vertrauensperson. Du kannst deine Daten jederzeit in den Einstellungen löschen."
+      },
+      {
+        "question": "Muss meine Vertrauensperson zustimmen?",
+        "answer": "Ja. Deine Vertrauensperson muss deine Einladung annehmen, bevor die Verbindung aktiv wird. Sie kann sich jederzeit abmelden — dabei werden alle ihre Daten sofort gelöscht."
+      },
+      {
+        "question": "Ist SoloBond ein Notfalldienst?",
+        "answer": "Nein. SoloBond ist eine tägliche Routine mit Sicherheitsnetz — kein Ersatz für Notfalldienste. Wenn du in unmittelbarer Gefahr bist, ruf deine lokale Notrufnummer an."
+      }
+    ]
+  },
+  "cta": {
+    "headline": "Bereit für dein stilles Ritual?",
+    "comingSoon": "Bald verfügbar — Frühjahr 2026"
+  },
+  "footer": {
+    "tagline": "Eine stille Verbindung für dein Solo-Leben.",
+    "privacyPolicy": "Datenschutzerklärung",
+    "legalTerms": "Impressum & AGB",
+    "copyright": "© 2026 SoloBond. Alle Rechte vorbehalten."
+  }
+}

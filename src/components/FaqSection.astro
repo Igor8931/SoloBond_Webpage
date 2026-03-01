@@ -1,0 +1,169 @@
+---
+interface Props {
+  content: {
+    headline: string;
+    items: Array<{
+      question: string;
+      answer: string;
+    }>;
+  };
+}
+
+const { content } = Astro.props;
+---
+
+<section class="faq section" id="faq">
+  <div class="faq__inner container container--narrow">
+    <h2 class="faq__headline reveal">{content.headline}</h2>
+
+    <div class="faq__list">
+      {content.items.map((item, i) => (
+        <div class={`faq__item reveal reveal-delay-${Math.min(i + 1, 5)}`}>
+          <button class="faq__question" aria-expanded="false">
+            <span class="faq__question-text">{item.question}</span>
+            <span class="faq__chevron" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq__answer-wrapper" aria-hidden="true">
+            <div class="faq__answer">
+              <p>{item.answer}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    background-color: var(--color-bg-white);
+    padding-block: var(--space-3xl);
+  }
+
+  .faq__headline {
+    text-align: center;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: var(--color-text-dark);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .faq__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .faq__item {
+    border-bottom: 1px solid var(--color-border-light);
+  }
+
+  .faq__item:first-child {
+    border-top: 1px solid var(--color-border-light);
+  }
+
+  .faq__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding: var(--space-md) 0;
+    cursor: pointer;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: clamp(1rem, 1.5vw, 1.0625rem);
+    font-weight: 700;
+    color: var(--color-text-dark);
+    transition: color 0.25s ease;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+  }
+
+  .faq__question:hover {
+    color: var(--color-accent);
+  }
+
+  .faq__chevron {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--color-text-muted);
+  }
+
+  .faq__item.is-open .faq__chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq__item.is-open .faq__question {
+    color: var(--color-accent);
+  }
+
+  .faq__answer-wrapper {
+    overflow: hidden;
+    height: 0;
+    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .faq__answer {
+    padding-bottom: var(--space-md);
+  }
+
+  .faq__answer p {
+    font-size: clamp(0.9375rem, 1.25vw, 1rem);
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    max-width: 600px;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.faq__item').forEach((item) => {
+    const btn = item.querySelector('.faq__question');
+    const wrapper = item.querySelector('.faq__answer-wrapper') as HTMLElement;
+    const answer = item.querySelector('.faq__answer') as HTMLElement;
+    if (!btn || !wrapper || !answer) return;
+
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('is-open');
+
+      if (isOpen) {
+        wrapper.style.height = wrapper.scrollHeight + 'px';
+        wrapper.offsetHeight;
+        wrapper.style.height = '0';
+        wrapper.setAttribute('aria-hidden', 'true');
+        btn.setAttribute('aria-expanded', 'false');
+        item.classList.remove('is-open');
+      } else {
+        // Close other open items smoothly
+        document.querySelectorAll('.faq__item.is-open').forEach((openItem) => {
+          const ow = openItem.querySelector('.faq__answer-wrapper') as HTMLElement;
+          const ob = openItem.querySelector('.faq__question');
+          if (ow) {
+            ow.style.height = ow.scrollHeight + 'px';
+            ow.offsetHeight;
+            ow.style.height = '0';
+            ow.setAttribute('aria-hidden', 'true');
+          }
+          if (ob) ob.setAttribute('aria-expanded', 'false');
+          openItem.classList.remove('is-open');
+        });
+
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        wrapper.setAttribute('aria-hidden', 'false');
+        wrapper.style.height = answer.offsetHeight + 'px';
+      }
+    });
+
+    wrapper.addEventListener('transitionend', () => {
+      if (item.classList.contains('is-open')) {
+        wrapper.style.height = 'auto';
+      }
+    });
+  });
+</script>

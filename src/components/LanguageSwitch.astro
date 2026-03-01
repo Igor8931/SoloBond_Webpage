@@ -1,0 +1,166 @@
+---
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const isEN = lang === 'en';
+const currentLang = isEN ? 'EN' : 'DE';
+const otherLang = isEN ? 'DE' : 'EN';
+const otherHref = isEN ? '/de/' : '/';
+---
+
+<div class="lang-switch">
+  <button class="lang-switch__trigger" aria-expanded="false" aria-haspopup="true">
+    <span class="lang-switch__globe" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/>
+        <ellipse cx="8" cy="8" rx="3.5" ry="7" stroke="currentColor" stroke-width="1.2"/>
+        <line x1="1" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.2"/>
+      </svg>
+    </span>
+    <span class="lang-switch__current">{currentLang}</span>
+    <span class="lang-switch__arrow" aria-hidden="true">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+        <path d="M2.5 3.75L5 6.25L7.5 3.75" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </button>
+
+  <div class="lang-switch__dropdown" role="menu">
+    <span class="lang-switch__option lang-switch__option--active" aria-current="true">
+      {currentLang}
+    </span>
+    <a href={otherHref} class="lang-switch__option" role="menuitem">
+      {otherLang}
+    </a>
+  </div>
+</div>
+
+<style>
+  .lang-switch {
+    position: relative;
+    display: inline-flex;
+  }
+
+  .lang-switch__trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.375rem 0.625rem;
+    border-radius: var(--radius-full);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    background: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
+    letter-spacing: 0.03em;
+  }
+
+  .lang-switch__trigger:hover {
+    color: var(--color-text-dark);
+    background-color: rgba(42, 42, 42, 0.04);
+    border-color: rgba(42, 42, 42, 0.08);
+  }
+
+  .lang-switch__globe {
+    display: flex;
+    align-items: center;
+    opacity: 0.6;
+  }
+
+  .lang-switch__arrow {
+    display: flex;
+    align-items: center;
+    transition: transform var(--transition-fast);
+  }
+
+  /* Dropdown */
+  .lang-switch__dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    background: var(--color-bg-white);
+    border: 1px solid rgba(42, 42, 42, 0.08);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-medium);
+    padding: 0.25rem;
+    min-width: 64px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity var(--transition-fast), transform var(--transition-fast), visibility var(--transition-fast);
+    z-index: 100;
+  }
+
+  /* Open state */
+  .lang-switch:global(.is-open) .lang-switch__dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .lang-switch:global(.is-open) .lang-switch__arrow {
+    transform: rotate(180deg);
+  }
+
+  .lang-switch__option {
+    display: block;
+    padding: 0.375rem 0.75rem;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    letter-spacing: 0.03em;
+    transition: background-color var(--transition-fast);
+  }
+
+  .lang-switch__option:hover {
+    background-color: rgba(42, 42, 42, 0.04);
+  }
+
+  .lang-switch__option--active {
+    color: var(--color-accent);
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.lang-switch').forEach((switcher) => {
+    const trigger = switcher.querySelector('.lang-switch__trigger');
+    if (!trigger) return;
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = switcher.classList.contains('is-open');
+      // Close all other dropdowns
+      document.querySelectorAll('.lang-switch.is-open').forEach((s) => s.classList.remove('is-open'));
+      if (!isOpen) {
+        switcher.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+      } else {
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close on outside click
+    document.addEventListener('click', () => {
+      switcher.classList.remove('is-open');
+      trigger.setAttribute('aria-expanded', 'false');
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        switcher.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+</script>

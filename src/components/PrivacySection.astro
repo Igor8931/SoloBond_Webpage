@@ -1,0 +1,63 @@
+---
+interface Props {
+  content: {
+    headline: string;
+    body: string;
+  };
+}
+
+const { content } = Astro.props;
+---
+
+<section class="privacy-section section" id="privacy">
+  <div class="privacy-section__inner container container--narrow">
+    <!-- Inline Shield Icon -->
+    <div class="privacy-section__icon reveal">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M24 4L6 12v12c0 11.1 7.7 21.5 18 24 10.3-2.5 18-12.9 18-24V12L24 4z" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M17 24l5 5 9-10" fill="none" stroke="var(--color-accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h2 class="privacy-section__headline reveal reveal-delay-1">{content.headline}</h2>
+    <p class="privacy-section__body reveal reveal-delay-2">{content.body}</p>
+  </div>
+</section>
+
+<style>
+  .privacy-section {
+    background-color: var(--color-primary);
+    text-align: center;
+    padding-block: var(--space-3xl);
+  }
+
+  .privacy-section__icon {
+    margin-bottom: var(--space-md);
+    display: flex;
+    justify-content: center;
+  }
+
+  .privacy-section__icon svg {
+    opacity: 0.7;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease;
+  }
+
+  .privacy-section__icon:hover svg {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  .privacy-section__headline {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    margin-bottom: var(--space-md);
+    color: var(--color-text-dark);
+  }
+
+  .privacy-section__body {
+    font-size: clamp(1.0625rem, 2vw, 1.1875rem);
+    line-height: 1.75;
+    color: var(--color-text-muted);
+    max-width: 520px;
+    margin-inline: auto;
+  }
+</style>

@@ -1,0 +1,117 @@
+---
+import IPhoneMockup from './IPhoneMockup.astro';
+
+interface Props {
+  content: {
+    headline: string;
+    body: string;
+    noAppRequired: string;
+  };
+}
+
+const { content } = Astro.props;
+---
+
+<section class="trusted section dark-bg" id="trusted-contact">
+  <div class="trusted__inner container">
+    <div class="trusted__text">
+      <h2 class="trusted__headline reveal">{content.headline}</h2>
+      <p class="trusted__body reveal reveal-delay-1">{content.body}</p>
+      <p class="trusted__note reveal reveal-delay-2">{content.noAppRequired}</p>
+    </div>
+    <div class="trusted__mockup reveal-right reveal-delay-2">
+      <IPhoneMockup
+        src="/images/screenshot-contact.png"
+        alt="Trusted Contact Dashboard"
+        rotation="right"
+        size="large"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .trusted {
+    position: relative;
+    background-color: var(--color-bg-dark);
+    padding-block: var(--space-3xl);
+    overflow: hidden;
+  }
+
+  /* Smooth gradient fade from the lighter section above */
+  .trusted::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, var(--color-bg-white), var(--color-bg-dark));
+    pointer-events: none;
+  }
+
+  /* Smooth gradient fade into the lighter section below */
+  .trusted::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to top, var(--color-bg-white), var(--color-bg-dark));
+    pointer-events: none;
+  }
+
+  .trusted__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+
+  .trusted__headline {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 800;
+    color: var(--color-bg-dark-text);
+    margin-bottom: var(--space-md);
+  }
+
+  .trusted__body {
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    line-height: 1.75;
+    color: var(--color-bg-dark-muted);
+    max-width: 480px;
+    margin-bottom: var(--space-md);
+  }
+
+  .trusted__note {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    letter-spacing: 0.01em;
+  }
+
+  .trusted__mockup {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .trusted__inner {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+    }
+  }
+
+  /* Mobile center text */
+  @media (max-width: 767px) {
+    .trusted__text {
+      text-align: center;
+    }
+
+    .trusted__body {
+      margin-inline: auto;
+    }
+  }
+</style>

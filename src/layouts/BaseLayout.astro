@@ -1,0 +1,165 @@
+---
+import '../styles/global.css';
+import '../styles/typography.css';
+import '../styles/animations.css';
+import '../styles/mockup.css';
+
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  content: {
+    lang: string;
+    meta: {
+      title: string;
+      description: string;
+    };
+    nav: Record<string, string>;
+    footer: Record<string, string>;
+  };
+  pageTitle?: string;
+  pageDescription?: string;
+  canonicalPath?: string;
+}
+
+const { content, pageTitle, pageDescription, canonicalPath } = Astro.props;
+const lang = content.lang;
+const isDE = lang === 'de';
+const title = pageTitle || content.meta.title;
+const description = pageDescription || content.meta.description;
+const baseDomain = 'https://solobond.app';
+const canonicalURL = canonicalPath ? `${baseDomain}${canonicalPath}` : (isDE ? `${baseDomain}/de/` : `${baseDomain}/`);
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Title & Description -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+
+  <!-- Canonical & Hreflang -->
+  <link rel="canonical" href={canonicalURL} />
+  <link rel="alternate" hreflang="en" href="https://solobond.app/" />
+  <link rel="alternate" hreflang="de" href="https://solobond.app/de/" />
+  <link rel="alternate" hreflang="x-default" href="https://solobond.app/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content="https://solobond.app/og-image.png" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SoloBond" />
+  <meta property="og:locale" content={isDE ? 'de_DE' : 'en_US'} />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="https://solobond.app/og-image.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Google Fonts: Preconnect + Load -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#F0E6D8" />
+
+  <!-- Noscript fallback: show reveals and FAQ answers if JS disabled -->
+  <noscript>
+    <style>
+      .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-up-far { opacity: 1 !important; transform: none !important; }
+      .faq__answer-wrapper { height: auto !important; }
+      .lang-switch__dropdown { opacity: 1 !important; visibility: visible !important; transform: none !important; position: static !important; }
+    </style>
+  </noscript>
+</head>
+<body>
+  <!-- Skip to content (a11y) -->
+  <a href="#main" class="sr-only" style="position:absolute;top:0;left:0;z-index:9999;padding:0.5rem 1rem;background:var(--color-accent);color:#fff;">Skip to content</a>
+
+  <Header content={content} />
+
+  <main id="main">
+    <slot />
+  </main>
+
+  <Footer content={content} />
+
+  <!-- Scroll Reveal Script -->
+  <script>
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-up-far').forEach((el) => {
+      observer.observe(el);
+    });
+  </script>
+
+  <!-- Header Scroll Effect + Parallax Script -->
+  <script>
+    const header = document.querySelector('.header') as HTMLElement;
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Header glass effect on scroll
+    if (header) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+          header.classList.add('header--scrolled');
+        } else {
+          header.classList.remove('header--scrolled');
+        }
+      }, { passive: true });
+    }
+
+    // Subtle parallax on mockup containers (desktop only, motion OK)
+    if (isDesktop && !prefersReducedMotion) {
+      const parallaxEls = document.querySelectorAll('.mockup-container');
+      let ticking = false;
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            parallaxEls.forEach((el) => {
+              const rect = (el as HTMLElement).getBoundingClientRect();
+              const viewH = window.innerHeight;
+              // Only apply when element is in view
+              if (rect.top < viewH && rect.bottom > 0) {
+                const progress = (rect.top - viewH / 2) / viewH;
+                const offset = Math.round(progress * -20); // max 20px shift
+                (el as HTMLElement).style.transform = `translateY(${offset}px)`;
+              }
+            });
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    }
+  </script>
+</body>
+</html>
