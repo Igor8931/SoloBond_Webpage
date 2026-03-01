@@ -7,7 +7,18 @@ const { lang } = Astro.props;
 const isEN = lang === 'en';
 const currentLang = isEN ? 'EN' : 'DE';
 const otherLang = isEN ? 'DE' : 'EN';
-const otherHref = isEN ? '/de/' : '/';
+
+// Build the other-language URL based on the current path
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+let otherHref: string;
+if (isEN) {
+  // EN → DE: prepend /de
+  otherHref = pathname === '/' ? '/de/' : `/de${pathname}`;
+} else {
+  // DE → EN: strip /de prefix
+  const stripped = pathname.replace(/^\/de/, '') || '/';
+  otherHref = stripped === '/' ? '/' : stripped;
+}
 ---
 
 <div class="lang-switch">

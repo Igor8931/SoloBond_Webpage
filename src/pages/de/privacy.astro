@@ -5,16 +5,344 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 <BaseLayout
   content={content}
-  pageTitle="Datenschutz — SoloBond"
-  pageDescription="SoloBond Datenschutzerkl&auml;rung"
+  pageTitle="Datenschutzerkl&auml;rung — SoloBond"
+  pageDescription="SoloBond Datenschutzerkl&auml;rung. Erfahre, wie wir mit deinen Daten umgehen — kein Tracking, keine Werbung, kein Profiling."
   canonicalPath="/de/privacy"
 >
-  <section class="section placeholder-page" style="padding-top: calc(var(--header-height) + var(--section-padding-y));">
-    <div class="container container--narrow" style="text-align: center;">
-      <h1>Datenschutz</h1>
-      <p style="margin-top: var(--space-md); color: var(--color-text-muted);">
-        Unsere Datenschutzerkl&auml;rung wird derzeit finalisiert und vor dem Launch hier ver&ouml;ffentlicht.
-      </p>
+  <article class="privacy-page">
+    <div class="privacy-page__inner">
+      <header class="privacy-page__header">
+        <h1 class="privacy-page__title">Datenschutzerkl&auml;rung</h1>
+        <p class="privacy-page__updated">Zuletzt aktualisiert: M&auml;rz 2026</p>
+      </header>
+
+      <div class="privacy-page__content">
+
+        <section class="privacy-section">
+          <h2>1. Verantwortlicher</h2>
+          <p>Verantwortlicher im Sinne der DSGVO:</p>
+          <address class="privacy-address">
+            Igor Baum<br />
+            c/o IP-Management #8358<br />
+            Ludwig-Erhard-Stra&szlig;e 18<br />
+            20459 Hamburg, Deutschland<br />
+            E-Mail: <a href="mailto:team@solobond.app">team@solobond.app</a>
+          </address>
+          <p>Der Verantwortliche ist eine Privatperson (kein eingetragenes Unternehmen). Die Benennung eines Datenschutzbeauftragten (DSB) ist nicht erforderlich und wurde nicht vorgenommen. Da der Verantwortliche in der Europ&auml;ischen Union ans&auml;ssig ist, gilt die Datenschutz-Grundverordnung (DSGVO, EU 2016/679) als prim&auml;rer Rechtsrahmen.</p>
+        </section>
+
+        <section class="privacy-section">
+          <h2>2. Was SoloBond tut</h2>
+          <p>SoloBond ist eine pers&ouml;nliche Sicherheits-App, mit der Nutzer einen t&auml;glichen Check-in durchf&uuml;hren und eine Vertrauensperson benennen k&ouml;nnen. Erfolgt innerhalb eines festgelegten Zeitraums kein Check-in, wird die Vertrauensperson automatisch benachrichtigt.</p>
+          <p>Wir verwenden keine Analysetools, kein Werbe-Tracking, kein Profiling und verkaufen keine Daten. Es gibt keine Werbenetzwerke Dritter oder verhaltensbasierte Tracking-Technologien.</p>
+        </section>
+
+        <section class="privacy-section">
+          <h2>3. Welche Daten wir verarbeiten</h2>
+
+          <h3>A) Benutzerkonto-Daten</h3>
+          <ul>
+            <li>Push-Benachrichtigungs-Token (Apple-Ger&auml;te-Token).</li>
+          </ul>
+
+          <h3>B) Check-in-Daten</h3>
+          <ul>
+            <li>Zeitstempel der t&auml;glichen Check-ins.</li>
+            <li>Check-in-Status (zur Bestimmung von Eskalationsbenachrichtigungen).</li>
+          </ul>
+
+          <h3>C) Daten der Vertrauensperson</h3>
+          <ul>
+            <li>E-Mail-Adresse der benannten Vertrauensperson.</li>
+            <li>Zuf&auml;llig generierter Einladungscode.</li>
+          </ul>
+
+          <h3>D) Technische Metadaten</h3>
+          <ul>
+            <li>IP-Adresse (in Server-/Hosting-Logs).</li>
+            <li>User-Agent (Browser-/Ger&auml;teinformationen).</li>
+            <li>Zeitstempel.</li>
+          </ul>
+
+          <p>Wir erheben <strong>KEINE</strong> Namen, Telefonnummern, GPS-/Standortdaten, Gesundheitsdaten, Fotos, Kontakte aus dem Adressbuch, biometrische Daten oder Zahlungsinformationen.</p>
+        </section>
+
+        <section class="privacy-section">
+          <h2>4. Zwecke und Rechtsgrundlagen</h2>
+
+          <div class="privacy-legal-item">
+            <p><strong>Bereitstellung und Betrieb des Dienstes</strong> (Check-ins, Eskalationsbenachrichtigungen, Kontoverwaltung).</p>
+            <p class="privacy-legal-basis">Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO — Vertragserf&uuml;llung.</p>
+          </div>
+
+          <div class="privacy-legal-item">
+            <p><strong>Eskalationsbenachrichtigungen an Vertrauenspersonen.</strong></p>
+            <p class="privacy-legal-basis">Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO — berechtigtes Interesse an der Sicherheit der Nutzer.</p>
+          </div>
+
+          <div class="privacy-legal-item">
+            <p><strong>Push-Benachrichtigungen.</strong></p>
+            <p class="privacy-legal-basis">Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO — Einwilligung &uuml;ber die Ger&auml;teeinstellungen.</p>
+          </div>
+
+          <div class="privacy-legal-item">
+            <p><strong>Sicherheit und Missbrauchspr&auml;vention.</strong></p>
+            <p class="privacy-legal-basis">Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO — berechtigtes Interesse an technischer Stabilit&auml;t und Sicherheit.</p>
+          </div>
+        </section>
+
+        <section class="privacy-section">
+          <h2>5. Dienstleister und Schutzma&szlig;nahmen</h2>
+          <p>Wir nutzen die folgenden Dienstleister und haben, soweit gem&auml;&szlig; Art. 28 DSGVO erforderlich, Auftragsverarbeitungsvertr&auml;ge (AVV) abgeschlossen:</p>
+          <ul>
+            <li>Supabase (EU-Hosting — Region Frankfurt).</li>
+            <li>Netlify (Website-Hosting und Backend-Funktionen).</li>
+            <li>Resend (transaktionale E-Mail-Zustellung).</li>
+            <li>Apple Push Notification Service (APNs).</li>
+          </ul>
+          <p>Soweit US-amerikanische Anbieter beteiligt sind, gelten Schutzma&szlig;nahmen wie Standardvertragsklauseln (SVK) und/oder die Teilnahme am EU-U.S. Data Privacy Framework (DPF). Trotz dieser Ma&szlig;nahmen kann ein Restrisiko des Zugriffs durch US-Beh&ouml;rden nicht vollst&auml;ndig ausgeschlossen werden.</p>
+        </section>
+
+        <section class="privacy-section">
+          <h2>6. Datenweitergabe</h2>
+          <p>Wir geben Daten nur weiter:</p>
+          <ul>
+            <li>An die von dir benannte Vertrauensperson (Kernfunktion).</li>
+            <li>An die aufgef&uuml;hrten Dienstleister.</li>
+            <li>Wenn gesetzlich vorgeschrieben.</li>
+          </ul>
+          <p>Wir verkaufen oder teilen keine personenbezogenen Daten zu Werbezwecken.</p>
+        </section>
+
+        <section class="privacy-section">
+          <h2>7. Zahlungen</h2>
+          <p>Alle Zahlungen werden ausschlie&szlig;lich &uuml;ber den Apple App Store abgewickelt. SoloBond erhebt oder speichert keine Zahlungsinformationen.</p>
+        </section>
+
+        <section class="privacy-section">
+          <h2>8. Datenspeicherung</h2>
+          <p><strong>Aktive Konten:</strong> Daten werden so lange gespeichert, wie es f&uuml;r die Bereitstellung des Dienstes erforderlich ist.</p>
+          <p><strong>Kontol&ouml;schung:</strong> Daten werden nach einer L&ouml;schanfrage unverz&uuml;glich aus unserer prim&auml;ren Datenbank gel&ouml;scht. Automatisierte Backups k&ouml;nnen Daten bis zu 7 Tage aufbewahren, bevor sie &uuml;berschrieben werden.</p>
+          <p>Technische Logs k&ouml;nnen von Anbietern zu Sicherheits- und Betriebszwecken aufbewahrt werden. Soweit konfigurierbar, streben wir eine Minimierung der Aufbewahrungsfristen an.</p>
+        </section>
+
+        <section class="privacy-section">
+          <h2>9. Vertrauensperson — Einwilligung und Widerruf</h2>
+          <p>Nutzer best&auml;tigen, dass sie die Einwilligung der Vertrauensperson eingeholt haben, bevor sie deren E-Mail-Adresse hinzuf&uuml;gen.</p>
+          <p>Die E-Mail-Adresse der Vertrauensperson wird ausschlie&szlig;lich f&uuml;r Sicherheitsbenachrichtigungen und die Ersteinladung verwendet.</p>
+          <p>Vertrauenspersonen k&ouml;nnen sich &uuml;ber den Link in den Benachrichtigungs-E-Mails abmelden oder uns direkt zur L&ouml;schung kontaktieren.</p>
+        </section>
+
+        <section class="privacy-section">
+          <h2>10. Deine Rechte (DSGVO)</h2>
+          <p>Du hast das Recht auf Auskunft, Berichtigung, L&ouml;schung, Einschr&auml;nkung der Verarbeitung, Daten&uuml;bertragbarkeit, Widerspruch sowie Widerruf der Einwilligung.</p>
+          <p>Anfragen k&ouml;nnen an <a href="mailto:team@solobond.app">team@solobond.app</a> gesendet werden. Wir antworten innerhalb von 30 Tagen.</p>
+          <p>Du kannst eine Beschwerde beim Hamburgischen Beauftragten f&uuml;r Datenschutz und Informationsfreiheit (HmbBfDI) einlegen.</p>
+        </section>
+
+        <section class="privacy-section">
+          <h2>11. Zus&auml;tzliche Rechte nach Region</h2>
+          <p><strong>Kalifornien (USA):</strong> Wir verkaufen oder teilen keine personenbezogenen Daten im Sinne des CCPA/CPRA.</p>
+          <p><strong>Vereinigtes K&ouml;nigreich und Schweiz:</strong> Es gelten Datenschutzrechte, die der DSGVO gleichwertig sind.</p>
+          <p><strong>EWR:</strong> Die DSGVO gilt als prim&auml;rer Rechtsrahmen.</p>
+        </section>
+
+        <section class="privacy-section">
+          <h2>12. Datensicherheit</h2>
+          <p>Wir setzen angemessene technische und organisatorische Ma&szlig;nahmen um, darunter EU-basiertes Hosting, verschl&uuml;sselte &Uuml;bertragung (HTTPS/TLS) und Row Level Security (RLS). Absolute Sicherheit kann jedoch nicht garantiert werden.</p>
+        </section>
+
+        <section class="privacy-section">
+          <h2>13. Kinder</h2>
+          <p>SoloBond ist nicht f&uuml;r Nutzer unter 16 Jahren bestimmt. In Rechtsordnungen, in denen eine niedrigere Altersgrenze gilt (z.&thinsp;B. 13 Jahre gem&auml;&szlig; COPPA), gilt die jeweilige lokale Altersgrenze.</p>
+        </section>
+
+        <section class="privacy-section">
+          <h2>14. Cookies und Tracking</h2>
+          <p>Die App verwendet keine Cookies, Tracking-Pixel oder Analysetools. Die Website kann ausschlie&szlig;lich technisch notwendige Cookies verwenden.</p>
+        </section>
+
+        <section class="privacy-section">
+          <h2>15. &Auml;nderungen dieser Richtlinie</h2>
+          <p>Wir k&ouml;nnen diese Datenschutzerkl&auml;rung von Zeit zu Zeit aktualisieren. Die aktuelle Version ist stets unter <a href="/de/privacy">solobond.app/de/privacy</a> verf&uuml;gbar.</p>
+        </section>
+
+        <section class="privacy-section">
+          <h2>16. Kontakt</h2>
+          <address class="privacy-address">
+            Igor Baum<br />
+            c/o IP-Management #8358<br />
+            Ludwig-Erhard-Stra&szlig;e 18<br />
+            20459 Hamburg, Deutschland<br />
+            E-Mail: <a href="mailto:team@solobond.app">team@solobond.app</a>
+          </address>
+        </section>
+
+      </div>
     </div>
-  </section>
+  </article>
 </BaseLayout>
+
+<style>
+  .privacy-page {
+    padding-top: calc(var(--header-height) + var(--space-xl));
+    padding-bottom: var(--space-3xl);
+    background-color: var(--color-bg-white);
+    min-height: 100vh;
+  }
+
+  .privacy-page__inner {
+    max-width: 800px;
+    margin-inline: auto;
+    padding-inline: var(--section-padding-x);
+  }
+
+  .privacy-page__header {
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--color-border-light);
+  }
+
+  .privacy-page__title {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    color: var(--color-text-dark);
+    line-height: 1.2;
+    margin-bottom: var(--space-sm);
+  }
+
+  .privacy-page__updated {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Section Blocks */
+  .privacy-section {
+    margin-bottom: var(--space-xl);
+  }
+
+  .privacy-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .privacy-section h2 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    color: var(--color-text-dark);
+    line-height: 1.3;
+    margin-bottom: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--color-border-light);
+  }
+
+  .privacy-section:first-child h2 {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .privacy-section h3 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 1.0625rem;
+    color: var(--color-text-dark);
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-xs);
+  }
+
+  /* Body text */
+  .privacy-section p {
+    margin-bottom: 0.75rem;
+    line-height: 1.75;
+    color: var(--color-text-dark);
+  }
+
+  .privacy-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Lists */
+  .privacy-section ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .privacy-section li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.375rem;
+    line-height: 1.75;
+    color: var(--color-text-dark);
+  }
+
+  .privacy-section li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.75em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    opacity: 0.6;
+  }
+
+  /* Links */
+  .privacy-section a,
+  .privacy-address a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: rgba(232, 120, 92, 0.3);
+    transition: text-decoration-color var(--transition-fast);
+  }
+
+  .privacy-section a:hover,
+  .privacy-address a:hover {
+    text-decoration-color: var(--color-accent);
+  }
+
+  /* Address blocks */
+  .privacy-address {
+    font-style: normal;
+    line-height: 1.75;
+    margin-bottom: 0.75rem;
+    color: var(--color-text-dark);
+  }
+
+  /* Legal basis callouts */
+  .privacy-legal-item {
+    margin-bottom: var(--space-md);
+    padding-left: var(--space-md);
+    border-left: 2px solid rgba(232, 120, 92, 0.25);
+  }
+
+  .privacy-legal-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .privacy-legal-basis {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Strong emphasis */
+  .privacy-section strong {
+    font-weight: 500;
+    color: var(--color-text-dark);
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .privacy-page {
+      padding-top: calc(var(--header-height) + var(--space-lg));
+      padding-bottom: var(--space-xl);
+    }
+
+    .privacy-legal-item {
+      padding-left: var(--space-sm);
+    }
+  }
+</style>
