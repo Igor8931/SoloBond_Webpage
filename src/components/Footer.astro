@@ -6,6 +6,7 @@ interface Props {
       tagline: string;
       privacyPolicy: string;
       legalTerms: string;
+      termsOfService: string;
       copyright: string;
     };
   };
@@ -42,6 +43,7 @@ const basePath = isDE ? '/de' : '';
       <p class="footer__copyright">{content.footer.copyright}</p>
       <nav class="footer__links" aria-label="Footer navigation">
         <a href={`${basePath}/privacy`} class="footer__link">{content.footer.privacyPolicy}</a>
+        <a href={`${basePath}/terms`} class="footer__link">{content.footer.termsOfService}</a>
         <a href={`${basePath}/legal`} class="footer__link">{content.footer.legalTerms}</a>
       </nav>
     </div>
